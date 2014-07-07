@@ -1,1 +1,7 @@
-ghu
+Today is the first day to this new Department. I feel a little nervous and confused before. 
+Then it is the real tension, for I know so little about it. 
+In the afternoon, I log on Github first time and learning to submit daily report.
+ It always showed "error: gnutls_handshake() failed: A TLS packet with unexpected length was received. while accessing https://github.com/Luna11/newbie_training.git/info/refs    fatal: HTTP request failed"when pushed the daily report. 
+ And I had not searched useful method to solve this problem from internet. So I call help to colleagues, and every time the result is OK when colleagues trying.
+I am so wondering. 
+The end of the day, finally find the network on my location does not need to set proxy. It is oolong.
