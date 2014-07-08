@@ -1,0 +1,7 @@
+Today, I do my first exercise. It is a simple "hello world" module installation and removement. 
+Just now I install the module successfully and it spended whole day to finish it. Efficiency is low.
+when compile the .c file, I want to use Makefile, but result is fail always. Later changed to use make command "make -c M= modules". It also spents a long time. 
+Both paths can success when using the make command. They are "make -C /usr/src/linux-headers-3.8.0-29-generic M=/home/ll/projects/ex/hello_world modules" and "make -C /lib/modules/3.8.0-29-generic/build M=/home/ll/projects/ex/hello_world modules". I don't understand it.
+I will study the grammar of Makefile tomorrow. 
+Other way, it may show "insmod: error inserting'hello.ko': -1 File exists" when insmod. U can lsmod to confirm whether the module is installed.
+Another problem has not solved, that is printk can't print message to terminal.
