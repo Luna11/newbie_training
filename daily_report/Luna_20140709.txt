@@ -1,0 +1,6 @@
+Today I finish the insertion and removement of the most simple module "Hello world". I am so happy.
+I used Makefile to compile the .c file today and it is successful. But it doesn't mean I have known Makefile. I just used it by modifying the example.
+To understand it, need further study.
+Today there are two questions which have not be solved. 
+The first, messages will not show in the terminal display after insmod, and only be displayed by command "cat /var/log/messages". Secondly, messages will not show out after setting log level as <1> KERN_ALERT when using printk command, but it will show after delete the setting "KERN_ALERT".
+Isn't it level <4> after delete the setting "KERN_ALERT"?? Looking for answers......
