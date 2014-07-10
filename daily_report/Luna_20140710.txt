@@ -1,2 +1,11 @@
-Today I plan to learn how to write a character driver. And I readed the book LDD3 to learn it. But I found the effect was not good after about two hours. Then I transfered to read code which is wrote by colleague. Some details are not clear for me and solved by colleague's help. I just readed a part of the code and will go on tomorrow.
-At afternoon, my boss help to review the "hello world" module which finished yestoday and I demonstrated it to him. He raise some problems and requirements: 1.To study seriously, especially must read the chapters which are listed, and this will reduce unnecessary problems. 2.Better to read English books. Although the beginning may be slow, but it is good for futher study. 3.Write code regulately. 4.Need to practice typing, and to focus on the accurate rate.
+Today I plan to learn how to write a character driver. And I readed the book LDD3 to learn it. 
+But I found the effect was not good after about two hours. Then I transfered to read code which 
+is wrote by colleague. Some details are not clear for me and solved by colleague's help. I just 
+readed a part of the code and will go on tomorrow.
+At afternoon, my boss help to review the "hello world" module which finished yestoday and I 
+demonstrated it to him. He raise some problems and requirements: 
+1.To study seriously, especially must read the chapters which are listed, and this will reduce 
+unnecessary problems. 
+2.Better to read English books. Although the beginning may be slow, but it is good for futher study. 
+3.Write code regulately. 
+4.Need to practice typing, and to focus on the accurate rate.
