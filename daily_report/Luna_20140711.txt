@@ -1,0 +1,16 @@
+Another weekend is coming, time flies really fast. 
+This week，I only finished a simplyest module insmod and rmmod. 
+I feel the speed of progress is slow and this happened not only 
+code writing but also reading. 
+I think the reason is I am not familiar with the content.
+
+So far, I just finished the node create of char driver content. 
+And later I will try to finish the code of this part. 
+I feel char driver content is so large and I plan to divide it 
+to several parts then finish them one by one.
+
+The first one is to make node. I will try to finish it this weekend. 
+If it is pass, then cut in file operations.
+
+Today I was reading books mainly, and no specific problem. 
+The general feeling is too slow, this part is not well understood.
