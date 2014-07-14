@@ -1,0 +1,9 @@
+Today I finished the allocation of the device number and node making.
+I used two ways to allocate the device number, which are manual and automatic.
+Then check it from /proc/devices.
+
+During the initialization of the cdev,I met two errors and had been resolved. 
+In addition, the file_operations structure are still not clear.
+The assignment are globalmem_llseek/globalmem\_read..., and I am not clear why 
+these are function name. After the assignment statement,  
+it is a comma instead of a semicolon in this structure, this problem is not clear also.
