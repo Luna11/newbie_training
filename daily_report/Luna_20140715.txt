@@ -1,0 +1,7 @@
+Today, I mainly exercise the first weekly programming ex01, 
+which is about the sort and suggested to use bitmap.
+I wrote a source file, but no output. 
+Estimation I used the fscanf function. 
+In the help of colleagues, using fread to achieve the sort function. 
+However, I'm still a little confused, but it is late and 
+I plan it as tomrrow's task.
