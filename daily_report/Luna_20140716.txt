@@ -1,0 +1,7 @@
+Tell the truth, I am a little off-kilter this afternoon. 
+So I will go off work early.
+In the morning I completed the sorting program. 
+Bit operation is not good and need more learning to strengthen it.
+In the afternoon, I force yourself to read part of the contents of the character device driver 
+and had a preliminary understanding to the general framework.
+I will know the details during programming process.
