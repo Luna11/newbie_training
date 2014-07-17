@@ -1,0 +1,9 @@
+I read the content of character device driver in the morning, 
+and the next work is the file operation function writting.
+In the afternoon, I finished the sorting ex01 which done yesterday 
+with out bitmap. But the basic idea is same.
+Space complexity estimation will increase a lot when not using bit, 
+and in my opinion, larger space will cause larger time spending 
+base on other conditions maintained.
+It need to be calculated specifically how much it is.
+Of course, time and space complexity are difficult, and need take more time to study.
