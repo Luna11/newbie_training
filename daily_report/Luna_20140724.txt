@@ -1,0 +1,13 @@
+I am a little depressed these days for the problem of Ubuntu. 
+Today, the Ubuntu is ready to use finally. But there is still 
+other problem of build image which is not solved. And I will 
+try to run it again tonight.
+
+Today I take the time to write a program to generate random numbers,
+and push it on the GitHub. In this program, I invoked the lib function
+fprintf() which I do not want to use originally.
+
+I can only choose this fprintf() function for others can't run 
+successfully. And I will try again with other functions later.
+
+Next, I must pay attention to char device driver and finish it as soon as possible.
