@@ -1,0 +1,13 @@
+Today my main task is to finish the basic frame of the char device driver. 
+This is my goal which is setted by myself. And I have finished it.
+Also, this task had been finished before system was broken and 
+today I done it again to review it.
+
+Till now, my chardrv.c includes the basic char device driver 
+but without file operation functions. And these are next tasks which  
+I plan to finish them within two days. 
+
+This time I will push it to github even it is not a completed file, 
+in order to prevent losing it.
+
+
