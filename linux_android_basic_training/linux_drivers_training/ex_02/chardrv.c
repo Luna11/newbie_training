@@ -13,6 +13,7 @@ Author/Created Date:
 	
 Modification History:
 	v1. only create driver, but no related operation functions;
+	v2. add file opretions such as read/write/llseek/ioctl;
 
 Note:
 	no
@@ -34,14 +35,12 @@ Note:
 
 /* MACROS  */
 #define MEM_SIZE    0x1000
-
-/* Defines  */
-//#define SCULL_READ  0x10001
-//#define SCULL_WRITE 0x10002
+#define MEM_CLEAR   0x1    /* clear all scull memory, and used in ioctl() */
 
 struct scull_dev{
 	struct cdev scull_cdev;
 	unsigned char mem[MEM_SIZE];
+	struct semaphore sem;
 }* scull_devp;
 
 static int major;
@@ -61,10 +60,112 @@ static int scull_close(struct inode *inode, struct file *filp)
 	return 0;
 }
 
+static ssize_t scull_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
+{
+	struct scull_dev *scull_devp=filp->private_data;
+	int retval=0;
+	unsigned long p=*f_pos;
+
+	if(down_interruptible(&scull_devp->sem))
+		return -ERESTARTSYS;
+
+	if(p>=MEM_SIZE)
+		return count? -ENXIO:0;
+	
+	if((p+count)>MEM_SIZE)
+		count=MEM_SIZE-p;
+
+	if(copy_to_user(buf, (scull_devp->mem+p), count)){
+		return -EFAULT;
+	} else {
+		*f_pos+=count;
+		retval=count;
+		printk("%s:copy %d bytes from %lu", __func__, retval, p);
+	}
+	return retval;
+	
+}
+
+static ssize_t scull_write(struct file *filp, char const __user *buf, size_t count, loff_t *f_pos)
+{
+	struct scull_dev *scull_devp=filp->private_data;
+	unsigned int retval=0;
+	unsigned long p=*f_pos;
+
+	if(down_interruptible(&scull_devp->sem))
+		return -ERESTARTSYS;
+
+	if(p>=MEM_SIZE)
+		return count? -ENXIO:0;
+
+	if((p+count)>MEM_SIZE)
+		count=MEM_SIZE-p;
+
+	if(copy_from_user((scull_devp+p), buf, count)){
+		return -EFAULT;
+	} else {
+		*f_pos+=count;
+		retval=count;
+		printk("%s\n:copy %u types from user space %ld", __func__, retval, p);
+		return retval;
+	}
+}
+
+static loff_t scull_llseek(struct file *filp, loff_t offset, int orig)
+{
+	loff_t newpos;
+
+	switch(orig)
+	{
+		case 0:
+			if(offset>MEM_SIZE||offset<0){
+				return -EFAULT;
+			}
+			newpos=offset;
+			return newpos;
+
+		case 1:
+			if((filp->f_pos+offset)>MEM_SIZE || (filp->f_pos+offset)<0){
+				return -EFAULT;
+			}
+			newpos=filp->f_pos+offset;
+			return newpos;
+			
+		case 2:
+			return -EFAULT;
+
+		default:
+			return -EFAULT;
+	}
+}
+
+static long scull_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+{
+	struct scull_dev *scull_devp=filp->private_data;
+
+	switch(cmd){
+		case MEM_CLEAR:
+			memset(scull_devp->mem, 0, MEM_SIZE);
+			printk("scull mem is set to 0\n");
+			break;
+
+		default:
+			return -EINVAL;
+	}
+
+	return 0;
+}
+
+
+
 static struct file_operations scull_fops={
 	.owner=THIS_MODULE,
 	.open=scull_open,
 	.release=scull_close,
+	.read=scull_read,
+	.write=scull_write,
+	.llseek=scull_llseek,
+	.unlocked_ioctl=scull_ioctl,
 };
 
 static int scull_init(void)
