@@ -1,0 +1,13 @@
+Today I finished the char driver preliminarily but don't know how to test
+whether it is ok.
+
+And the ioctl() function is not clear for me. I don't know the parameter cmd
+include which numbers and the corresponding functions.
+
+But I think I must go forword and look for the answers later. It seems that
+I can't easily find the answers now and must go ahead to read more contents.
+Maybe I could find the answers tomorrow, maybe it will need more time, but I
+plan to finish it this week.
+
+In addition, I have not built the image since some sources are not installed 
+in my OS. It is a troublesome thing too.
