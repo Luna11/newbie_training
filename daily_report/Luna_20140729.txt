@@ -1,0 +1,9 @@
+Today, I read the misc char driver contents but not done it. Via reading I 
+know that Misc drivers share some common characteristics and kernel abstract
+these commonalities into an API and this simplifies the initialized way 
+of misc drivers.
+
+So the initialized way is very simply. But this misc driver just has major
+number 10 and this lead to it can't driver multiple devices.
+
+This afternoon I read the ioctl() function, but I am mishmash. Depressed~~
