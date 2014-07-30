@@ -1,0 +1,8 @@
+I read the content of ioctl() function almost the whole day and 
+have a little know about it. But still have some confusing.
+
+The command number generate is a bit of bother. There are 4 micros 
+to generate cmd number. The example use same micros command with 
+different sequential numbesr. And this confused me.
+
+For now, maybe I should spend more time to study the ioctl() function. 
