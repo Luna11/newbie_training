@@ -3,13 +3,16 @@
 		generate.c
 
 	Description:
-		generate random data
+		generate M non-repeated randoms between 1 to N
 
 	Author/Created Date:
 		Luna Wang, 2014/7/24
 
 	Modification history:
-		no
+
+	note:
+		M<=N
+		
 
 -------------------------------------------*/
 
@@ -18,33 +21,51 @@
 #include <time.h>
 //#include <fcntl.h>
 
-#define N 100
+#define N 10
+#define M 10
 
 int main(void)
 {
-	int i, j;
-	char a[N]={0};
+	int i, j, k, l;
+	char a[M]={0};
+	int m=M;
+	int flag=0;
 //	int fp=open("gfile.txt", O_RDWR | O_CREAT | O_TRUNC, 0664);
-    FILE *fp=fopen("gfile.txt", "w+");
+	FILE *fp=fopen("gfile.txt", "w+");
 
 
 	srand((int)time(0));
-	for(i=0; i<N; i++)
+	a[0]=1+rand()%N;
+
+	while(m-1)
 	{
-		
 		j=1+rand()%N;
-		if(a[j-1]==0)
+		for(k=0; k<=(M-m); k++)
 		{
-			a[j-1]=1;
+			if(j==a[k])
+			{
+				flag=1;
+				break;
+			}
+		}
+
+		if(!flag)
+		{
+			a[M-m+1]=j;
+			m--;
 		}
 		else
 		{
-			i--;
-			continue;
+			flag=0;
 		}
-//		printf("%d \t", j);
-		fprintf(fp, "%d\n", j);
 	}
+
+	for(l=0; l<M; l++)
+	{
+		printf("%d\t", a[l]);
+		fprintf(fp, "%d\n", a[l]);
+	}
+	
 
 	fclose(fp);
 	fp=NULL;
