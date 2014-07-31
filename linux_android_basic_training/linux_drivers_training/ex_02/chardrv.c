@@ -47,6 +47,7 @@ static int major;
 
 static struct class *cls;
 
+/* open */
 static int scull_open(struct inode *inode, struct file *filp)
 {
 	filp->private_data=scull_devp;
@@ -54,12 +55,14 @@ static int scull_open(struct inode *inode, struct file *filp)
 	return 0;
 }
 
+/* close */
 static int scull_close(struct inode *inode, struct file *filp)
 {
 	printk("%s\n", __func__);
 	return 0;
 }
 
+/* read */
 static ssize_t scull_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
 {
 	struct scull_dev *scull_devp=filp->private_data;
@@ -69,23 +72,31 @@ static ssize_t scull_read(struct file *filp, char __user *buf, size_t count, lof
 	if(down_interruptible(&scull_devp->sem))
 		return -ERESTARTSYS;
 
-	if(p>=MEM_SIZE)
-		return count? -ENXIO:0;
-	
+	if(p>=MEM_SIZE){
+		if(count>0)
+			retval=-ENXIO;
+		
+		goto out;
+	}
+		
 	if((p+count)>MEM_SIZE)
 		count=MEM_SIZE-p;
 
 	if(copy_to_user(buf, (scull_devp->mem+p), count)){
-		return -EFAULT;
-	} else {
-		*f_pos+=count;
-		retval=count;
-		printk("%s:copy %d bytes from %lu", __func__, retval, p);
-	}
+		retval=-EFAULT;
+		goto out;
+	} 
+	*f_pos+=count;
+	retval=count;
+	printk("%s:copy %d bytes from %lu", __func__, retval, p);
+
+out:
 	return retval;
+	up(&scull_devp->sem);
 	
 }
 
+/* write */
 static ssize_t scull_write(struct file *filp, char const __user *buf, size_t count, loff_t *f_pos)
 {
 	struct scull_dev *scull_devp=filp->private_data;
@@ -95,22 +106,31 @@ static ssize_t scull_write(struct file *filp, char const __user *buf, size_t cou
 	if(down_interruptible(&scull_devp->sem))
 		return -ERESTARTSYS;
 
-	if(p>=MEM_SIZE)
-		return count? -ENXIO:0;
+	if(p>=MEM_SIZE){
+		if(count>0)
+			retval=-ENXIO;
+		
+		goto out;
+	}
 
 	if((p+count)>MEM_SIZE)
 		count=MEM_SIZE-p;
 
 	if(copy_from_user((scull_devp+p), buf, count)){
-		return -EFAULT;
-	} else {
-		*f_pos+=count;
-		retval=count;
-		printk("%s\n:copy %u types from user space %ld", __func__, retval, p);
-		return retval;
-	}
+		retval=-EFAULT;
+		goto out;
+	} 
+
+	*f_pos+=count;
+	retval=count;
+	printk("%s\n:copy %u types from user space %ld", __func__, retval, p);
+	
+out:
+	return retval;
+	up(&scull_devp->sem);
 }
 
+/* lseek */
 static loff_t scull_llseek(struct file *filp, loff_t offset, int orig)
 {
 	loff_t newpos;
@@ -139,6 +159,7 @@ static loff_t scull_llseek(struct file *filp, loff_t offset, int orig)
 	}
 }
 
+/* ioctl */
 static long scull_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
 	struct scull_dev *scull_devp=filp->private_data;
@@ -157,7 +178,7 @@ static long scull_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 }
 
 
-
+/* file operations */
 static struct file_operations scull_fops={
 	.owner=THIS_MODULE,
 	.open=scull_open,
@@ -168,11 +189,13 @@ static struct file_operations scull_fops={
 	.unlocked_ioctl=scull_ioctl,
 };
 
+/* initialize function */
 static int scull_init(void)
 {
 	dev_t devno;
 	int res;
-
+	
+	/* register device ID */
 	res=alloc_chrdev_region(&devno, 0, 1, "scull");
 	if(res<0)
 	{
@@ -180,24 +203,33 @@ static int scull_init(void)
 	}
 	major=MAJOR(devno);
 
+	/* apply for memory with kmalloc */
 	scull_devp=kmalloc(sizeof(struct scull_dev), GFP_KERNEL);
 	if(!scull_devp)
 	{
 		res=-ENOMEM;
 		goto fail_kmalloc;
 	}
+	
+	/* initialize memory space with 0 */
 	memset(scull_devp, 0, sizeof(struct scull_dev));
 
+	/* initialize the cdev and fops */
 	cdev_init(&(scull_devp->scull_cdev), &scull_fops);
 
+	/* add the scull_cdev and devno to kernel */
 	if(cdev_add(&(scull_devp->scull_cdev), devno, 1)<0)
 	{
 		res=-EFAULT;
 		goto fail_cdev_add;
 	}
 
+	/* create a class and a device which belongs to the class */
 	cls=class_create(THIS_MODULE, "scull");
 	device_create(cls, NULL, devno, NULL, "scull0");
+	
+	/* initialize sema */
+	sema_init(&scull_devp->sem, 1);
 
 	printk("%s\n", __func__);
 	return 0;
@@ -207,7 +239,7 @@ fail_kmalloc:unregister_chrdev_region(devno, 1);
 	return res;
 }
 
-
+/* exit function */
 static void scull_exit(void)
 {
 	cdev_del(&(scull_devp->scull_cdev));
