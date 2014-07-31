@@ -1,0 +1,15 @@
+I tryied to build Futon kk image again yesterday night, and the same result
+is ubuntu show "pipe broken". 
+
+It is because I installed "libgl1-mesa-dri:i386". The system will remove 
+ubuntu-desktop during installing this package, and this is the reason why
+can't enter xwindow after reboot.
+
+I install ubuntu again this morning without "libgl1-mesa-dri:i386",  
+and build the image.
+Now it seems ok. Later I will flash it to unit to check whether
+it is really ok.
+
+This afternoon, I finished the generation of random data with traversing method.
+It cost more time when deal with the first number a[0]. I can't deal with it
+with the same rule with other numbers and finally I had to handle it especially.
