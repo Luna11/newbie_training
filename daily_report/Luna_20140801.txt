@@ -1,0 +1,14 @@
+Today, I mainly run the random data generation programs and compared the 
+differences, especially the running time.
+
+When I tried to generate 90,000 random numbers between 1 to 100000, it cost 
+about 27s with traversing method but only about 0.2s with bit map method.
+
+When the number of random data generation reach to 900,000, the traversing 
+method will cost about 46mins but bit map only cost about 2.3s. The difference
+is suprising!
+
+Then I changed the number of random data to 9000,000. The bit map method
+cost about 27s. And the travesing method show "core dumped" error. I think
+it is because the array int a[9000000] need too large memory. Of couse, 
+this is just my idea and not be confirmed.
