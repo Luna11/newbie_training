@@ -1,0 +1,17 @@
+This morning, I run the char device driver which is finished several days ago.
+It seems that the read function is not ready. The compiling is ok, but can't 
+cat anything after echo messages. I have not solved this problem. 
+And this driver has another issue, that is the system will show pipe broken
+after rmmod this drver module. The same result, I can't solve it.
+
+Then in the afternoon, I turned to do the third excesize misc char driver.
+Spending about 4 hours, I finished it and it run no problem.
+
+Of course, there are some issues when compiling. But there's no much 
+difficulties except one. That is caused by the missing property "const" 
+when declarating the second argument in the write function.
+
+In this misc driver, I test the read and write function with echo and cat
+commands. Both are ok. 
+
+But I have to spend some time to solve the ex02 char driver problem.
