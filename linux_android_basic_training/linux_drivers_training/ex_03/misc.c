@@ -1,3 +1,22 @@
+/*---------------------------------------------
+Filename:
+misc.c
+
+Copyright (C) 2014 Wistron
+All rights reserved.
+
+Description:
+This file is a misc char device driver.
+
+Author/Created Date:
+Luna Wang, Aug04'14
+
+Modification History:
+
+Note:
+
+--------------------------------------------*/
+
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/types.h>
