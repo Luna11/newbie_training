@@ -1,0 +1,12 @@
+This morning, I finished the second excesize of weekly programming. Acturally
+it is not too difficult. And I spent less than 30 mins to write it. 
+But I find it has function only for positive number. I realized that 
+it will add 0 or 1 in the high bit after operation >>. And my program is ok
+when it add 0 to high bit. So if the number is negative number, it may add 1
+to the high bit. And this is endless loop in my program.
+
+Finally, I have to control the loop number by sizeof(int).
+
+In the afternoon, I read the ioctl() function. The main idea is known, but 
+my user test has error and till now I have not solved it. 
+So the ioctl function will cost me another day time at least.
