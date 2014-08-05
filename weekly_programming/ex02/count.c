@@ -19,9 +19,6 @@
 /* include files */
 #include <stdio.h>
 
-/* MACROS */
-#define N 7
-
 /* INTERAL FUNCTION */
 int count(int m)
 {
@@ -41,11 +38,11 @@ int count(int m)
 /* IMPLEMENTATION */
 int main()
 {
-	int q;
-	//scanf("\nplease input an int number:%d\n", &n);
-	q=count(N);
-	printf("The number %d include %d bits 1.\n", N, q);
+	int q, n;
+	printf("Please input a number:");
+	scanf("%d", &n);
+	q=count(n);
+	printf("The number %d include %d bits 1.\n", n, q);
 
 	return 0;
-
 }
