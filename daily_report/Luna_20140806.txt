@@ -1,0 +1,10 @@
+I have finished the ioctl() function and user test application at last!
+Feels so good.
+
+I writed a .h file for the cmd argument. So it can be included in the driver
+program and user test application. Now, the .h file is not perfect and I will
+improve it later.
+
+There's a problem when writing the .h file. The magic number is difficult 
+to determined, for I can't find the file "ioctl-number.txt" to check 
+which number is used.
