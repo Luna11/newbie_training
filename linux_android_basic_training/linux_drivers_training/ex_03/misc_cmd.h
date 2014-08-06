@@ -1,0 +1,10 @@
+#define MISC_IOC_MAGIC  'y'
+#define MISC_IOC_MAXNR  3
+/*
+#define MISC_READ  _IOR(MISC_IOC_MAGIC, 1, int)
+#define MISC_WRITE  _IOW(MISC_IOC_MAGIC, 2, int)
+*/
+#define MISC_READ _IO(MISC_IOC_MAGIC, 1)
+#define MISC_WRITE _IO(MISC_IOC_MAGIC, 2)
+#define MISC_IOC_TEST  _IO(MISC_IOC_MAGIC,3)
+
