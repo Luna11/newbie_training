@@ -31,8 +31,18 @@ Note:
 #include <asm/uaccess.h>
 //#include <asm/system.h>
 #include <linux/slab.h>
+#include <linux/ioctl.h>
+#include "misc_cmd.h"
 
 #define MEM_SIZE 0x1000
+
+/*  remove to file misc_cmd.h    
+#define MISC_IOC_MAGIC  'y'
+#define MISC_IOC_MAXNR  3
+#define MISC_READ  _IOR(MISC_IOC_MAGIC, 1, int)
+#define MISC_WRITE  _IOW(MISC_IOC_MAGIC, 2, int)
+#define MISC_IOC_TEST  _IO(MISC_IOC_MAGIC,3)
+*/
 
 struct misc_dev {
 	struct miscdevice miscdev;
@@ -152,6 +162,42 @@ static loff_t misc_llseek(struct file *filp, loff_t offset, int org)
 	return retval;
 }
 
+static long misc_ioctl(/*struct inode *inode,*/ struct file *filp, unsigned int cmd, unsigned long arg)
+{
+	if(_IOC_TYPE(cmd)!=MISC_IOC_MAGIC)
+		return -EINVAL;
+	if(_IOC_NR(cmd)>MISC_IOC_MAXNR)
+		return -EINVAL;
+
+	switch(cmd){
+		case MISC_READ:   //read from kernel driver
+			{	int data=33312;
+				copy_to_user((int *)arg, &data, sizeof(int));
+				printk("%s\tMISC_READ\t%d\n", __func__, data);
+			}
+			break;
+
+		case MISC_WRITE:   //WRITE TO KERNEL DRIVER
+			{
+				int data=0;
+				copy_from_user(&data, (int *)arg, sizeof(int));
+				printk("%s\tMISC_WRITE\t%d\n", __func__, data);
+			}
+			break;
+
+		case MISC_IOC_TEST:
+			{
+				printk("%s\tMISC_NO_ARGUMENT_TEST\n", __func__);
+			}
+			break;
+
+		default:
+			break;
+	}
+
+	return 0;
+}
+
 static struct file_operations misc_fops={
 	.owner=THIS_MODULE,
 	.open=misc_open,
@@ -159,6 +205,7 @@ static struct file_operations misc_fops={
 	.read=misc_read,
 	.write=misc_write,
 	.llseek=misc_llseek,
+	.unlocked_ioctl=misc_ioctl,
 };
 
 static struct miscdevice miscdev={
