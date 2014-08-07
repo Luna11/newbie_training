@@ -1,0 +1,15 @@
+This morning, I returned to the linux ex02 to solve the problem - can't 
+write/read. I don't know where is the problem. Compiling is ok. And there's
+no any error showed when echo and cat. Also there's no any message showed 
+in the terminal. I even don't know which function has problem, the read or 
+the write. I spent about 2 hours trying to solve the problem, but the result
+is depressed.
+
+In the afternoon, I had to seek help from colleagues. And this problem cost
+him more time. At the end, he find one pointer points to error position, 
+which lead to writing character string to inappropriate user space address.
+The same time, this issue lead to the kernel crash when remove this module.
+
+A careless action costs me so much time to find out it~~~~
+
+
