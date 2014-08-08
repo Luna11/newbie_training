@@ -1,0 +1,7 @@
+Today I read the concurrency and race conditions. I think the code is easy,
+for it is only down() and up() releated function. The difficulty is which 
+data we should protect. And should pay attention up the semaphore in time.
+
+So in the afternoon, I review the ex02 char driver again. And I find some
+content are clear but some are still not clear. I plan to try the ex02 again
+referencing the scull's memory usage.
