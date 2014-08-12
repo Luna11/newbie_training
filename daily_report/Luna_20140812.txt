@@ -1,0 +1,14 @@
+Today I finished the linux ex05 code of concurrency and race condition. But
+I have not completed how to test this function.
+
+In this function, I met a problem that is kernel will crashed when inserting
+this module. Then I find it will be ok when put the sema_init() function after
+the kmalloc function. Thinking for a long time, I still can't find out the 
+reason. Then I had to turn to ask colleague. After colleague's explanation,
+I immediately understand. The first argument of sema_init() is a address, 
+and it is included in a struct, so the address is not certain if it is used
+before kmalloc memory to the struct. In this condition, it can lead to unknown
+risk such as kernel crashed.
+
+This afternoon, we learn the vim usage. It is so powerful and functional. I
+should spend more time to study it.
