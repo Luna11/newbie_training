@@ -1,0 +1,13 @@
+This morning, I read the time, delays and deferred work releated content.
+I am confused, don't know what to do. And I am stressed, so I had to study
+it again later.
+
+In the afternoon, I turn to weekly programming exercise. In this filed, I
+just finished two exercises. I try to finish the third ex this week. This
+afternoon, I finish the link create function and output function. Follow
+this speed of progress, I think I could finish it this week.
+
+In the create function, I used a char which is got through scanf() function
+to control the input frequency. But it is not right, so adopt colleague's
+advise to use string instead of single char. My code run successfully after
+this improvement.
