@@ -9,4 +9,6 @@ I used a loop to search this special location. There are three result.
 3. If the location is over the range more than two numbers, the function is ok.
 
 So, I think it is the border issue. But I haven't solved this issue till now.
-My mind is stop running now. I have to try it tomorrow.
+My mind is stop running now. I have to try it tomorrow. If I can't solve it
+tomorrow, maybe I will turn to use a global variable to record the number 
+of nodes in the link. 
