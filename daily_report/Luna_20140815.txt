@@ -1,0 +1,7 @@
+Today my main task is still the link exercise. Yesterday I had added the
+insert and delete function in the .c file. But there's a problem that caused
+by border issue. Today I tried to solve it with a global variable recording
+the number of nodes in the link. Through this way, the insert function is ok.
+But the delete function still has problem. In desperation, I turn to search
+help from info. The content is so clear and I immediatley understand it.
+Now the key is to practise and implement it as soon as possible.
