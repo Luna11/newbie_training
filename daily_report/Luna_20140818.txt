@@ -1,0 +1,11 @@
+Today I mainly read the content of shell script and variable. I know the basic 
+grammar of script. And write a simple script to show the file permissions.
+In the shell script, the varible is a key part. For a normal variable, there's
+no $ before it when initializing. And $ is must when using later. 
+In my exercise, there's a expression that is "filelist=$(ls $dir)". I can't 
+understand the function of the first $ sign. My colleague said it is a shell
+command and we should just know how to use it. But it is hard for me to rember
+it if I don't know the details. It is puzzled. 
+
+At the end of the day, I try to load the char driver which I wrote before to
+the andriod kernel. But it is not easy and not successful till now. It is so depressed.
