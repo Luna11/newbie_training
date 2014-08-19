@@ -1,0 +1,12 @@
+Today I mainly loaded the char driver which wrote several days ago to the 
+andriod kernel. I refered to a webpage to do it. During the progress, there
+are many problems although it includes only about 8 steps.
+
+The first problem: make menuconfig command failed, and not show the selection
+page. The solution is install build-essential and libncurses5-dev.
+
+The second problem: It always show some .h files not exist when run make under
+kernel director. The solution is run "make bootimage" under andriod director.
+
+Now the third problem is coming, the compile result is failed. I have no energy
+to solve it today. It is tomorrow's task.
