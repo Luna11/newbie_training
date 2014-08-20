@@ -1,0 +1,27 @@
+Now it is 3:00pm, I still tried to load the character driver which I wrote
+before to the kernel. But it is failed. And I have no idea about it.
+
+Although the result is failed, I have known the basic process of loading
+a program to the kernel. The process probably includes three steps.
+
+1. Make a folder under the /kernel/drivers director. Put your .c(here it is
+test.c) and .h files under the new folder. And you must make two files 
+"Makefile" and "Kconfig" under this folder. The Makefile includes 
+"obj-$(CONFIG_TEST) += test.o". Here the result of $(CONFIG_TEST) is y, n or m. 
+The Kconfig file use key word "config" to define an new configure option.
+This new configure option can be found in the menuconfig. And the setting
+in the menuconfig function as the result of $(CONFIG_TEST) y, n or m.
+This is the step one - finished the layer of test driver itself. But the Makefile
+and Kconfig both are recursived. So we must change the upper files.
+
+2. Change the Makefile and Kconfig files in the upper layer(here it is drivers). 
+In the Makefile, add "obj-$(CONFIG_TEST) +=test/". And in the Kconfig,
+add "source "drivers/test/Kconfig" ".
+
+3. make menuconfig to set the configure option, then make to compile.
+
+After this two days' learning, I known the Makefile is rule of compile and
+whether to compile is defined by configuration.
+
+
+
