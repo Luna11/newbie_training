@@ -55,13 +55,14 @@ static int second_open(struct inode *inode, struct file *filp)
 {
 	/* initialize timer */
 	init_timer(&second_devp->s_timer);
-	second_devp->s_timer.function = &second_timer_handle;
-	second_devp->s_timer.expires = jiffies + HZ;
+	second_devp->s_timer.function = &second_timer_handle;   /* the callback function after the delay */
+	second_devp->s_timer.expires = jiffies + 10*HZ;    /* expires stores the end time of delay, here it means delay 10s */
 
 	add_timer(&second_devp->s_timer);   /* add or register timer */
 
 	atomic_set(&second_devp->counter, 0);   /* set counter to 0 */
 
+	printk("%s: open timer.\n", __func__);
 	return 0;
 }
 
