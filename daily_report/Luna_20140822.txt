@@ -1,0 +1,25 @@
+Today, I finally finished the linux ex06 - the time and delay. Before my doubt
+is where to set the delay. So I stayed the beginning and don't know what to do.
+Yestoday, I though I must do something. So I referred book finished a timer.
+After finishing it, I suddenly understand I can set delay wherever I want to.
+
+Then I set a delay in the open function of a character driver. I can see the
+delay result by a user test file. But I met a problem. Now I will introduce 
+my user test file first before decripting the problem.
+
+The user test file as follows:
+    printf("now, let's open the device miscdev, starting......\n");
+	int fd = open("/dev/miscdev", O_RDWR);
+	... ...
+	printf("device miscdev opened\n");
+
+The idea result is that putout "now, let's open the device miscdev, starting......"
+and delay a moment, then putout "device miscdev opened". For I set the delay
+function in the open function of the miscdev.
+
+But the true result is: delay a moment first, then putout "now, let's open 
+the device miscdev, starting ......" and "device miscdev opened". Of course,
+the rate of this problem is not 100%, and sometimes the result can meet my idea.
+
+I really don't understand.
+
