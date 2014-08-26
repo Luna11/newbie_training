@@ -1,0 +1,13 @@
+Today I made a stupid mistake when reading the script which to update touch FW.
+There's a command "echo mxt540s_V3.0.AA.fw > /sys/devices/i2c-3/3-004a/update_fw"
+in the script. And I though "mxt540s_V3.0.AA.fw" as a file name instead of
+a string. It is so stupid that I spent more time to study why there's no director
+to guide it.
+
+In the afternoon, I connect the GA module to my PC. But the PC can't show the
+device. Finally I found I have not added "adb_usb.ini" under the ~/.android.
+Although it cost much time to solve it, I learned many about the 51-android.rules
+and adb_usb.ini files.
+But there's a strange point: all the time I didn't add the adb_usb.ini file
+in the PC, the Futon machine can be showed in the device list but now GA is
+failed. What a wonder.
