@@ -3,9 +3,10 @@ it is a very simple thing even don't need to do it. But in the process,
 I encountered two problems. One is fastboot locked and need to unlock it before
 flash image. For this project, the unlock command is "fastboot oem unlock moto_pollux".
 The other is permission denied during flash the image. I had no idea about it 
-for I have change boot authority when flash the image. Then in the colleague's
-suggestion, I find there's "./" path before the flash command. But I have set
-the path to environment. This is the reason and it is ok after removing the "./"
+for I have change root authority when flash the image. Then in the colleague's
+suggestion, I find there's "./" path before the flash command in the flash.sh file.
+But I have set the path in the environment. This is the reason why it showed
+permission denied and it is ok after removing the "./"
 
 In the afternoon, I finished the insert sort function of the weekly programming ex04.
 It is a original version and I will improve it later to compare the amount of
