@@ -1,0 +1,9 @@
+Yesterday I finished the weekly programming ex04 sort function with different
+methods. The amount of time cost with different method are abviously not the
+same.
+Then I tried the special number such as ascending ordered numbers and equal numbers 
+with one sort method. The time always cost 0 no matter how large amounts of data.
+
+Today my main task is to study the gpio. I knew the method of control it with
+register, but I don't know how to control it in a kernel. It seems a large task 
+and need to read the circuit diagram to determine which IO to control and how to. In a word, I am very dizzy now. 
