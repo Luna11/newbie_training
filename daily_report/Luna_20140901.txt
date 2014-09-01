@@ -1,0 +1,21 @@
+Today my main task is read the touch FW update related code which is modified 
+by Guangwei.
+There are two main changes in the code. One is change the current to 2ma from
+8ma via modifing the .drv of struct gpiomux_setting gsbi3_active_cfg. The other
+change is adding attribute in sysfs and echo 0 to disable irq before the FW update.
+
+Then I study the interface function DEVICE_ATTR of sysfs. The prototype is
+#define DEVICE_ATTR(_name, _mode, _show, _store) struct device_attribute dev_attr_##_name=__ATTR(_name, _mode, _show, _store)
+_show means read function, and _store is write function.
+This macro included in the <linux/device.h>.
+
+The step of interface creatation as below:
+1. static DEVICE_ATTR(irq_enable, S_IWUGO, NULL, mxt_irq_enable_store);
+2. static struct attribute *mxt_attrs[] = { &dev_attr_irq_enable.attr, NULL};
+In theory, we can add any device interface as long as we need in these two point.
+3. package it: static struct attribute_group mxt_attr_group = { .attrs = mxt_attrs, };
+4. sysfs_create_group(&client->dev.kobj, &mxt_attr_group);
+Now the interface creatation is completed.
+
+This content is I find in the web and I refered it to read the modified code. 
+The next task is create a interface by myself.
