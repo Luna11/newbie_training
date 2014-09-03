@@ -1,0 +1,9 @@
+Today I read the script for FW update and study the sed command. The only feeling
+is the script is so deep that I am at a loss to understand it. I need to think it over.
+In addition, I need to do more to understand the attribute which is added under
+the sys. Because the echo command is to the function "irq_enable" and I can't 
+understand the path how to direct it.
+
+Now I am trying to build the android platform to study the API. In a word, there's too much 
+to learn for me. And I am at a loss what to do now. I must find a way as soon as possible.
+
