@@ -1,0 +1,9 @@
+Today my main task is to test the process of uploading languagecode and boardversion to GA image.
+In this process, I encountered two problems. 
+1. There's no function after push these two .ini file into /factory folder.
+The solution is chmod to 600 from 666. It is so strange.
+2. The /factory folder will be empty after re-flash image without factory.img.
+The solution is don't flash gpt.bin during re-flash. 
+For command "flash partition /image/gpt_both0.bin" is partitioning, and this
+will clear the partition.
+So we should not flash gpt_both0.bin if we just want to flash image partially.
