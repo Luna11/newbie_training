@@ -1,0 +1,7 @@
+Today my main task is to exercise the weekly programming ex05 which is to generate
+m unequal rand numbers from 0 to n. And m<=n is a must. The first method in the reference 
+included a for loop to make sure the unequal numbers. In the loop, it used a if sentence which includes m-- and n-i to ensure the number of rand is m.
+
+The method cost me long time to understand. Now I understand the basic of it and I feel
+it is so magical. I particularly want to know how the author to think of this method. 
+
