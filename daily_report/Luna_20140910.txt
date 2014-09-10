@@ -1,0 +1,9 @@
+Today I mainly finished the TC70 release image. Before, the compile is always fail. 
+This morning we totally found the reason that is we did not put the license in the image.
+Then I build a new image referring the SOP.
+
+In the afternoon, I mainly check the logcat file to search the reason for THD OOB issue - ThreatDetectionService stop run. I find there's no below 3 lines in the NG log.
+1. I/ThreatDetectionService( 1052): {"MaxPasswordLimit":{"enable":"false"}}
+2. I/ThreatDetectionService( 1052): threat_json_string : {"MaxPasswordLimit":{"enable":"false"}}
+3. I/ThreatDetectionService( 1052): FILE PATH : /data/data/com.motorolasolutions.emdk.threatdetectionservice/files/MaxPasswordLimit
+But I don't know whether it is useful for solving the problem.
