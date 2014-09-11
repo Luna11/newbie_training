@@ -1,0 +1,14 @@
+Today I try to solve the problem that filezilla can't save the password. This problem 
+cause me input passwork every time I login the ftp. I really can't stand it.
+I spent some time to solve it and the result is ok. But the funny thing is I
+don't know why and how.
+
+The other task is analyze the issue that happened on THD OOB. The issue is that
+it will show ThreatDetectionService stopped when boot machine and it will not
+recovery after reboot. In the normal logcat, we can find ThreatDetectionService
+is detecting the root authority. If login with root, this service will warning 
+or do other action to protect user's next actions. 
+
+Now the problem we met is ThreatDetectionService stopped which also cause user
+can't do any action after boot to os. Why is it stopped?? Which program control it?? 
+No solution......
