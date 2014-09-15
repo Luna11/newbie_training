@@ -1,0 +1,8 @@
+Today I wanted to add nodes under sysfs. But I failed. Now It is 5:00pm and
+I have absolutely no any idea about it.
+In fact, I think I find a good website about add a temperature sensor to the
+android os. It show the detail from driver to user API. I am reading it, but
+there's many functions I need to know and finally I unknowingly turn to the 
+platform_driver. In my idea, it is releases to how to create sysyfs node. And
+when I read it many times, I find there seems no directional relationship between them.
+Now, I have no idea about it. Depressed......
